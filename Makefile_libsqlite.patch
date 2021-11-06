@@ -1,0 +1,21 @@
+--- Makefile_libsqlite.orig	2021-11-06 13:20:14.363296600 +0100
++++ Makefile_libsqlite	2021-10-12 00:49:41.947294000 +0200
+@@ -14,8 +14,8 @@
+ 	( cd $(SRC_NAME) ; \
+ 	./configure \
+ 		--prefix= \
+-		$(if $(LIBS_BUILD_SHARED),--disable-static,--enable-static) \
+-		$(if $(LIBS_BUILD_SHARED),--enable-shared,--disable-shared) \
++		--disable-static \
++		--enable-shared \
+ 		--disable-readline \
+ 		--disable-dynamic-extensions \
+ 		--disable-fts3 \
+@@ -35,6 +35,7 @@
+ 
+ install:
+ 	$(MAKE) -C $(SRC_NAME) install DESTDIR=$(STAGEDIR)
++	sed "s|'/lib'|'$(STAGEDIR)/lib'|g" -i $(STAGEDIR)/lib/libsqlite3.la
+ 
+ romfs:
+ ifeq ($(LIBS_BUILD_SHARED),y)

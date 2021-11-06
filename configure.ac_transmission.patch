@@ -1,0 +1,38 @@
+--- configure.ac_transmission.orig	2021-11-06 13:20:15.503296600 +0100
++++ configure.ac_transmission	2021-10-13 20:05:48.671169500 +0200
+@@ -10,6 +10,8 @@
+ AC_SUBST(USERAGENT_PREFIX,[user_agent_prefix])
+ AC_SUBST(PEERID_PREFIX,[peer_id_prefix])
+ 
++IT_PROG_INTLTOOL
++
+ m4_ifdef([AM_SILENT_RULES],[AM_SILENT_RULES([yes])])
+ 
+ AC_CONFIG_MACRO_DIR([m4])
+@@ -558,11 +560,11 @@
+     m4_ifdef([IT_PROG_INTLTOOL],
+              [IT_PROG_INTLTOOL([0.35.0],[no-xml])],
+              [AC_MSG_ERROR("--enable-nls requires intltool to be installed.")])
+-    AC_CHECK_HEADERS([libintl.h])
+-    GETTEXT_PACKAGE=transmission-gtk
+-    AC_SUBST(GETTEXT_PACKAGE)
+-    AC_DEFINE_UNQUOTED([GETTEXT_PACKAGE],["$GETTEXT_PACKAGE"],[Gettext package])
+-    AM_GLIB_GNU_GETTEXT
++#    AC_CHECK_HEADERS([libintl.h])
++#    GETTEXT_PACKAGE=transmission-gtk
++#    AC_SUBST(GETTEXT_PACKAGE)
++#    AC_DEFINE_UNQUOTED([GETTEXT_PACKAGE],["$GETTEXT_PACKAGE"],[Gettext package])
++#    AM_GLIB_GNU_GETTEXT
+     transmissionlocaledir='${prefix}/${DATADIRNAME}/locale'
+     AC_SUBST(transmissionlocaledir)
+ fi
+@@ -666,8 +668,7 @@
+                  web/style/transmission/images/Makefile
+                  web/style/transmission/images/buttons/Makefile
+                  web/javascript/Makefile
+-                 web/javascript/jquery/Makefile
+-                 po/Makefile.in])
++                 web/javascript/jquery/Makefile])
+ 
+ AC_OUTPUT
+ 

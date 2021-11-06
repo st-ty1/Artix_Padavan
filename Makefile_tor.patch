@@ -1,0 +1,19 @@
+--- Makefile_tor.orig	2021-10-12 20:23:50.463594700 +0200
++++ Makefile_tor	2021-10-12 19:39:23.683594700 +0200
+@@ -1,6 +1,7 @@
+ SRC_NAME=tor-0.4.X.X
+ 
+-CFLAGS +=$(COPT) -ffunction-sections -fdata-sections -fvisibility=hidden
++CFLAGS +=$(COPT) -ffunction-sections -fdata-sections -fvisibility=hidden -I$(STAGEDIR)/include -L$(STAGEDIR)/lib
++CPPFLAGS += -I$(STAGEDIR)/include -L$(STAGEDIR)/lib
+ LDFLAGS += -Wl,--gc-sections
+ 
+ all: config_test
+@@ -18,6 +19,7 @@
+ 	autoreconf -fi ; \
+ 	./configure \
+ 		--prefix=/usr \
++		--with-openssl-dir=$(STAGEDIR) \
+ 		--host=$(HOST_TARGET) \
+ 		--build=$(HOST_BUILD) \
+ 		--sysconfdir=/etc/storage \

@@ -1,0 +1,10 @@
+--- Makefile_util-linux.orig	2021-11-06 13:20:15.503296600 +0100
++++ Makefile_util-linux	2021-10-11 23:39:44.427294000 +0200
+@@ -8,6 +8,7 @@
+ all: config_test
+ 	$(MAKE) -j$(HOST_NCPU) -C $(SRC_NAME) && \
+ 	$(MAKE) -C $(SRC_NAME) install DESTDIR=$(STAGEDIR)
++	sed "s|'/lib'|'$(STAGEDIR)/lib'|g" -i $(STAGEDIR)/lib/libuuid.la
+ 
+ config_test:
+ 	( if [ -f ./config_done ]; then \
