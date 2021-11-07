@@ -20,7 +20,10 @@ HowTo: Build Padavan firmware with Artix host systems (or Arch Linux)
 	
 	$ git clone https://github.com/st-ty1/Artix_Padavan
 
-4. Start building process with script build_padavan.sh of this repo; some of the file has to be patched to work on Artix/Arch Linux. These patches are included in this repo and script build_padavan.sh consider them.
+4. Start building process with script build_padavan.sh of this repo; the script build_padavan.sh considers the patches included in this repo. Some of the source files have to be patched to work on Artix/Arch Linux. These patches are needed as, e.g.:
+   - Arch Linux/Artix use more recent versions of applications which are needed for building process. (acuatlly challenging: update to autoconf-2.70)
+   - Arch Linux/Artix based systems depends much more on shared libraries than other Linux-sytems, like Debian or Ubuntu, so building tools
+     like libtool and pkgconfig are more likely misdirected by presence of shared libs of host-OS and will fail.
 
 BR
 
