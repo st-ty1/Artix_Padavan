@@ -13,7 +13,7 @@ cd toolchain
 ./build_toolchain.sh
 
 # replace config-template for your needs; here for example Asus RT-N14U is used
-cp -v $PADAVAN_REPO_DIR/configs/templates/asus/rt-n14u.config $PADAVAN_REPO_DIR/trunk/.config
+cp -v $PADAVAN_REPO_DIR/trunk/configs/templates/asus/rt-n14u.config $PADAVAN_REPO_DIR/trunk/.config
 
 #patches for Artix
 patch -i $PADAVAN_PATCHES_DIR/Makefile_util-linux.patch $PADAVAN_REPO_DIR/trunk/user/util-linux/Makefile
