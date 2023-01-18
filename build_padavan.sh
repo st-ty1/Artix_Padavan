@@ -1,6 +1,6 @@
 #! /bin/sh
 
-PADAVAN_PATCHES_DIR=$HOME/Artix_padavan
+PADAVAN_PATCHES_DIR=$HOME/Artix_Padavan
 PADAVAN_REPO_DIR=$HOME/padavan-ng
 
 cd $PADAVAN_REPO_DIR
